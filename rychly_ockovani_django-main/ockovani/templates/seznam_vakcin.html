@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+</div>
+<div class="row">
+
+    {% for vakcina in vakciny %}
+    <div class="col-sm-3" style="padding: 20px">
+        <div class="card">
+            <div class="card-body">
+                    <h2 style="text-align: center">{{ vakcina.nazev_firmy }}</h2>
+                  <div class="container">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><b>Účinnost vakcíny:</b></td>
+                        <td>{{ vakcina.ucinnost_vakciny }} %</td>
+                      </tr>
+                      <tr>
+                        <td><b>Cena vakcíny:</b></td>
+                        <td>{{ vakcina.cena_vakciny }} Kč</td>
+                      </tr>
+                      <tr>
+                        <td><b>Typ vakcíny:</b></td>
+                        <td>{{ vakcina.typ_vakciny }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Počet dávek:</b></td>
+                        <td>{{ vakcina.pocet_davek }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

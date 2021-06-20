@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Seznam očkovaných{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Seznam očkovaných: {{ view.kwargs.vakcina_nazev_firmy }}</h2>
+    </div>
+</div>
+<div class="row">
+    {% for ockovany in vakcina_genre %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="card">
+            {% if ockovany.qr %}
+            <img class="card-img-top" src="{{ ockovany.qr.url }}" alt="{{ ockovany.prijmeni }}">
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title"><a href="{% url 'osoba_detail' ockovany.pk %}">{{ ockovany.prijmeni }}</a></h4>
+                <p class="card-text">{% for vakcina in ockovany.vakcina.all %}<a href="{% url 'vakcina_genre' vakcina.nazev_firmy %}" class="btn btn-info">{{ vakcina.nazev_firmy }}</a> {% endfor %}</p>
+                <a href="{% url 'osoba_detail' ockovany.pk %}" class="btn btn-primary">Podrobnosti</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <strong>Celkový počet očkovaných:</strong> {{ num_ockovani }}
+    </div>
+</div>
+{% endblock %}

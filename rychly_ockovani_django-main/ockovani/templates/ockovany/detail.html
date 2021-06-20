@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Detail očkovaného{% endblock %}
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="row mt-5 mb-3">
+    <div class="col-lg-2 mb-3"></div>
+    <div class="col-lg-8 mb-3">
+        <h2 class="display-4 mb-3" style="text-align: center">{{ osoba_detail.jmeno }} {{ osoba_detail.prijmeni }}</h2>
+        <div class="bg-secondary text-light p-2 mb-3" style="text-align: center; font-size: 20px"><b>Osobní informace</b></div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="container">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><b>Jméno:</b></td>
+                        <td>{{ osoba_detail.jmeno }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Příjmení:</b></td>
+                        <td>{{ osoba_detail.prijmeni }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Datum narození:</b></td>
+                        <td>{{ osoba_detail.datum_narozeni }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Povolání/Věková skupina:</b></td>
+                        <td>{% for osoba in osoba_detail.povolani.all %}{{ osoba.nazev_povolani }}{% endfor %}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class="col-md-5">
+                 <div class="container">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><b>Datum prvního očkování:</b></td>
+                        <td>{{ osoba_detail.datum_prvni_ockovani }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Datum druhého očkování:</b></td>
+                        <td>{{ osoba_detail.datum_druhe_ockovani }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Vakcína:</b></td>
+                        <td>{% for osoba in osoba_detail.vakcina.all %}{{ osoba.nazev_firmy }}{% endfor %}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Kód pojišťovny:</b></td>
+                        <td>{{ osoba_detail.kod_pojistovny }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ osoba_detail.qr.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ osoba_detail.qr.url }}" class="img-fluid" alt="QR osoby">
+                    <p style="text-align: center">OČKOVACÍ KÓD: {{ osoba_detail.kod_ockovaneho }}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: center">
+    {% if perms.ockovani.change_ockovani %}
+    <a href="{% url 'osoba_update' osoba_detail.pk %}" class="btn btn-info">Editovat</a>
+    {% endif %}
+    {% if perms.ockovani.delete_ockovani %}
+    <a href="{% url 'osoba_delete' osoba_detail.pk %}" class="btn btn-danger">Smazat</a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script>
+    $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+{% endblock %}

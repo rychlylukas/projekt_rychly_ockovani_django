@@ -1,0 +1,44 @@
+.lightGallery {
+    width: 100%;
+    margin: 0
+}
+
+#lightgallery .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.lightGallery .image-tile {
+    position: relative;
+    margin-bottom: 30px;
+    margin-right: 10px
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.navsirka{
+    margin: 30px !important;
+    font-size: 120%;
+    text-transform: uppercase;
+}
+
+.center_prehled {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.center_list {
+    text-align: center;
+}
+
+a {
+  color: black; !important;
+}

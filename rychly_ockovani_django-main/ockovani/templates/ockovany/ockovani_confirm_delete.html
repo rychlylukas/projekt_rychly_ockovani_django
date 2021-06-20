@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Smazání osoby{% endblock %}
+
+{% block content %}
+
+<div class="row mb-3">
+    <div class="col-sm-12 bg-warning">
+        <h2 class="display-4 text-center">Potvrzení smazaní osoby</h2>
+    </div>
+</div>
+<div class="row mt-5 mb-3">
+    <p>Jste si jistí, že chcete vymazat osobu: {{ osoba }}?</p>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Ano, smazat.">
+    </form>
+
+</div>
+
+{% endblock %}

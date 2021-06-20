@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css" media="screen" />
+
+<div class="row" style="margin-top: 20px">
+    <div class="col-md-3">
+        <h2 class="text-center bg-info text-light p-2">Jak se mohu registrovat?</h2>
+        <p style="text-align: justify">Přihlášení k očkování probíhá ve dvou krocích. Obojí lze provést na portálu crs.mzcr.cz.
+            <br>
+            <br>
+            Prvním krokem je registrace, na jejímž začátku vyplníte telefonní číslo. Dorazí vám SMS zpráva s ověřovacím kódem PIN1. Po vyplnění tohoto kódu zadáte údaje o sobě a vyberete místo, kde se chcete nechat očkovat.
+            Registrace k očkování probíhá prostřednictvím centrálního rezervačního systému: registrace.mzcr.cz.
+            <br>
+            <br>
+            Druhým krokem je rezervace. Ve chvíli, kdy se na vámi vybraném očkovacím místě uvolní termín, obdržíte zvací SMS zprávu s kódem PIN2. Po zadání tohoto kódu provedete rezervaci termínu. Zvací SMS zpráva znamená, že očkovací místo má k dispozici volné dávky vakcíny.
+            Rezervaci termínu očkování je po registraci možné provést na odkazu: rezervace.mzcr.cz.
+            Rezervaci je nutné udělat do 72 hodin od obdržení PIN 2.
+            Bez zvací SMS není rezervace možná.
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <h2 class="text-center bg-info text-light p-2">Seznam vakcín</h2>
+        {% include "blocks/vakcina_list.html" %}
+        <div class="col-sm-12" style="text-align: center; margin-top: 5%">
+            <strong>Celkový počet očkovaných:</strong> {{ num_ockovani }}
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <h2 class="text-center bg-info text-light p-2">Proč se očkovat?</h2>
+        <p style="text-align: justify">Přihlášení k očkování probíhá ve dvou krocích. Obojí lze provést na portálu crs.mzcr.cz.
+
+            Vakcíny proti covid-19 jsou léčiva, která brání vzniku onemocnění způsobeného novým koronavirem SARS-CoV-2 tím, že vyvolávají imunitní odpověď proti tomuto viru. Covid-19 může způsobit závažné onemocnění s možnými doposud neznámými dlouhodobými následky nebo i úmrtí u osob jakéhokoliv věku, včetně jinak zdravých lidí.
+            Vakcinace je nejefektivnější způsob, jak dlouhodobě zastavit šíření epidemie u nás i ve světě. Zavedení vakcinace pomohlo už v minulosti ke snížení či dokonce vymýcení řady nemocí (např. pravé neštovice, dětská obrna, záškrt).
+            Aplikace vakcíny je cestou k prevenci vážného či dokonce smrtelného průběhu covid-19.
+            Každý, kdo se naočkuje, pomáhá ochránit ty, kteří tak kvůli svému zdravotnímu stavu učinit nemohou.
+            Neschopenka kvůli covid-19 znamená pro běžnou domácnost velké finanční ztráty. V případě komplikací tohoto onemocnění je samozřejmě nutná hospitalizace v nemocnici, po které obvykle následuje rekonvalescence. Tomu všemu zabrání vakcína.
+        </p>
+    </div>
+</div>
+
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-md-6">
+        <h2 class="text-center bg-info text-light p-2">Přehled očkovaných</h2>
+        <a href="{% url 'ockovani' %}">
+            <img src="../../media/prehledy/prehled_ockovani.png" alt="QR - přehled očkovaných" class="center_prehled">
+        </a>
+        <p style="text-align: center">(stačí kliknout)</p>
+    </div>
+
+
+    <div class="col-md-6">
+        <h2 class="text-center bg-info text-light p-2">Přehled vakcín</h2>
+        <a href="{% url 'seznam_vakcin' %}">
+            <img src="../../media/prehledy/prehled_vakciny.png" alt="QR - přehled vakcín" class="center_prehled">
+        </a>
+        <p style="text-align: center">(stačí kliknout)</p>
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+{% endblock %}

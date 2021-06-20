@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Editace osoby{% endblock %}
+
+{% block content %}
+
+<div class="row mb-3">
+</div>
+<div class="row mt-5 mb-3">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Potvrdit">
+    </form>
+</div>
+
+{% endblock %}
