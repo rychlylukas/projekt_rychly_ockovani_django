@@ -1,0 +1,5 @@
+<ul class="list-group" style="text-align: center">
+    {% for vakcina in vakciny %}
+    <li class="list-group-item list-group-item-info"><a class="text-dark" href="{% url 'vakcina_genre' vakcina.nazev_firmy %}">{{ vakcina.nazev_firmy }}</a></li>
+    {% endfor %}
+</ul>
